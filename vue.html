@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello, Vue</title>
+  <script src="http://unpkg.com/vue" type="text/javascript"></script>
+</head>
+<body>
+  <div class="app">
+    <h1>Hello, {{name}}</h1>
+    <h3><a v-bind:href="url">Google</a></h3>
+    <button v-on:click="changeName">Change name</button>
+
+  <ul>
+    <category-item
+      v-for="key in categories"
+      v-bind:text="key.name"
+      v-bind:amount="key.amount"
+      v-bind:class="{active: key.isActive}">
+      </category-item>
+  </ul>
+
+  </div>
+  <script>
+
+  Vue.component('category-item', {
+    template: '<li class="item">{{text}} {{amount}}</li>',
+    props: ['text', 'amount']
+  })
+
+
+    new Vue ({
+      el: ('.app'),
+      data: {
+        name: 'Lera',
+        url: 'http://google.com',
+        categories: [
+          {
+            name: 'business',
+            amount: 34,
+            isActive: true
+        },
+          {
+            name: 'Haloween',
+            amount: 5,
+            isActive: false
+          },
+          {
+            name: 'Birthday',
+            amount: 38,
+            isActive: false
+          }
+        ]
+      },
+      methods:{
+        changeName: function(){
+          this.name = "Nikita"
+        }
+      }
+    })
+
+  </script>
+  <style media="screen">
+    .item{
+      /*color: red;*/
+    }
+
+    .active{
+      color: red;
+    }
+  </style>
+</body>
+</html>
