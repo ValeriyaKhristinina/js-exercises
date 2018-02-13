@@ -17,20 +17,22 @@
     <h1>Hi {{dataForm.firstName}}</h1>
 
   <ul>
-    <!-- <category-item
+     <!-- <category-item
       v-for="key in categories"
       v-bind:text="key.name"
       v-bind:amount="key.amount"
       v-bind:class="{active: key == activeCategory}"
-      v-on:click.native="activeCategoryItem(key)">
+      v-on:click.native="activeCategory = key">
       </category-item> -->
 
 
+
+<!--
       <category-item
         v-bind:text="categories[0].name"
         v-bind:amount="categories[0].amount"
         v-bind:class="{active: categories[0] == activeCategory}"
-        v-on:click.native="activeCategoryItem(categories[0])">
+        v-on:click.native="activeCategory=categories[0]">
         </category-item>
 
         <category-item
@@ -45,7 +47,21 @@
           v-bind:amount="categories[2].amount"
           v-bind:class="{active: categories[2] == activeCategory}"
           v-on:click.native="activeCategoryItem(categories[2])">
-        </category-item>
+        </category-item> -->
+
+
+        <li
+            v-for="key in categories"
+            v-on:click="activeCategory = key"> {{key.name}} , {{key.amount}}
+        </li>
+
+        <p>{{activeCategory.name}}</p>
+        <li  v-on:click="activeCategory=categories[0]">{{categories[0].name}}</li>
+        <li  v-on:click="activeCategory=categories[1]">{{categories[1].name}}</li>
+        <li  v-on:click="activeCategory=categories[2]">{{categories[2].name}}</li>
+
+        <button v-on:click="activeCategory={name:'allo'}">aa</button>
+
   </ul>
 
   </div>
@@ -67,7 +83,7 @@
           firstName: '',
           lastName: ''
         },
-        activeCategory: null,
+        activeCategory: {name:'nothing'},
         categories: [
           {
             name: 'business',
