@@ -17,3 +17,4 @@ console.log(example)
 
 addClass(example, 'open')
 console.log(example)
+
